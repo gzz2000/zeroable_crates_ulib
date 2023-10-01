@@ -58,7 +58,7 @@ pub fn derive(ref data: DeriveInput) -> Result<TokenStream2, syn::Error> {
     let where_clause_tokens = quote!(
         where
             #( #where_preds ,)*
-            #( #ty_params: ::zeroable::Zeroable, )*
+            #( #ty_params: ::ulib::Zeroable, )*
             #( #extra_predicates ,)*
     );
 
@@ -71,13 +71,13 @@ pub fn derive(ref data: DeriveInput) -> Result<TokenStream2, syn::Error> {
         {
             const _ASSERT_IS_ZEROABLE_101:()={
                 #({ #test_code })*
-                const fn assert_impl_zeroable<T: ::zeroable::Zeroable>() {}
+                const fn assert_impl_zeroable<T: ::ulib::Zeroable>() {}
                 #field_asserts
             };
         }
 
         #[doc=#zeroable_docs]
-        unsafe impl #impl_generics ::zeroable::Zeroable for #name #ty_generics
+        unsafe impl #impl_generics ::ulib::Zeroable for #name #ty_generics
         #where_clause_tokens
         {}
     );

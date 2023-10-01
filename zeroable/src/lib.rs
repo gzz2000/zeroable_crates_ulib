@@ -118,7 +118,7 @@ pub use bytemuck;
 /// [`bytemuck::Zeroable`](https://docs.rs/bytemuck/1/bytemuck/trait.Zeroable.html)
 /// trait.
 ///
-pub use bytemuck::Zeroable;
+pub use ulib::Zeroable;
 
 pub use zeroable_derive::Zeroable;
 

@@ -35,5 +35,6 @@ nightly_docs=["bytemuck/extern_crate_alloc"]
 
 [dependencies]
 bytemuck="1.0"
+ulib = {version = "0.3.7", path = "../../ulib", registry="zzdeps" }
 zeroable_derive={version="0.2.0",path="../zeroable_derive"}
 
