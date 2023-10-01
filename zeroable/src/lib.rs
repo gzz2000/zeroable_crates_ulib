@@ -111,7 +111,7 @@ pub mod zeroable_docs;
 
 extern crate self as zeroable;
 
-#[doc(noinline)]
+// #[doc(noinline)]
 pub use bytemuck;
 
 /// A reexport of the

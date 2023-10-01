@@ -71,6 +71,7 @@ pub fn derive(ref data: DeriveInput) -> Result<TokenStream2, syn::Error> {
         {
             const _ASSERT_IS_ZEROABLE_101:()={
                 #({ #test_code })*
+                const fn assert_impl_zeroable<T: ::zeroable::Zeroable>() {}
                 #field_asserts
             };
         }
@@ -181,7 +182,7 @@ where
         .map(|field| {
             let ty = field.ty;
             quote_spanned!(field.ty_span()=>
-                { let _=<#ty as ::zeroable::GetAssertZeroable>::GET; }
+                { assert_impl_zeroable::<#ty>(); }
             )
         })
         .collect()
@@ -219,7 +220,7 @@ fn docs_for_union(ds: &'_ DataStructure<'_>, config: &'_ ZeroConfig<'_>) -> Stri
             let ty = field.ty.to_token_stream();
             let _ = write!(buffer, "- `{}: {}` \n\n", field.ident(), ty);
         }
-    };
+    }
 
     if zeroable_fields.len() + nonzero_fields.len() < union_.fields.len() {
         buffer.push_str("# Private Fields\n\n");
