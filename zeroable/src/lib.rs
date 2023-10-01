@@ -120,7 +120,7 @@ pub use bytemuck;
 ///
 pub use ulib::Zeroable;
 
-pub use zeroable_derive::Zeroable;
+pub use ulib_zeroable_derive::Zeroable;
 
 pub use crate::assert_zeroable::{AssertZeroable, GetAssertZeroable};
 

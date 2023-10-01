@@ -1,5 +1,5 @@
 [package]
-name = "zeroable_derive"
+name = "ulib_zeroable_derive"
 description = "An implementation detail of zeroable"
 version = "0.2.0"
 authors = ["rodrimati1992 <rodrimatt1985@gmail.com>"]
